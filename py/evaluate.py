@@ -55,7 +55,7 @@ def main():
         
         # compute MOTA
         print "Evaluation of video-based  multi-person pose tracking"    
-        metricsAll = evaluateTracking(gtFramesAll,prFramesAll,args.outputDir,True,args.saveEvalPerSequence)
+        metricsAll, metricsMidAll = evaluateTracking(gtFramesAll,prFramesAll,args.outputDir,True,args.saveEvalPerSequence)
 
         metrics = np.zeros([Joint().count + 4,1])
         for i in range(Joint().count+1):
@@ -67,6 +67,7 @@ def main():
         # print AP
         print "Multiple Object Tracking (MOT) metrics:"
         eval_helpers.printTable(metrics,motHeader=True)
-
+        
+        eval_helpers.printStatistics(metricsMidAll)
 if __name__ == "__main__":
    main()

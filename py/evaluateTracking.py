@@ -198,7 +198,7 @@ def computeMetrics(gtFramesAll, motAll, outputDir, bSaveAll, bSaveSeq):
         print 'saving results to', filename
         eval_helpers.writeJson(metricsFin,filename)
 
-    return metricsFinAll
+    return metricsFinAll, metricsMidAll
 
 
 def evaluateTracking(gtFramesAll, prFramesAll, outputDir, saveAll=True, saveSeq=False):
@@ -208,6 +208,6 @@ def evaluateTracking(gtFramesAll, prFramesAll, outputDir, saveAll=True, saveSeq=
     _, _, _, motAll = eval_helpers.assignGTmulti(gtFramesAll, prFramesAll, distThresh)
 
     # compute MOT metrics per part
-    metricsAll = computeMetrics(gtFramesAll, motAll, outputDir, saveAll, saveSeq)
+    metricsAll, metricsMidAll = computeMetrics(gtFramesAll, motAll, outputDir, saveAll, saveSeq)
 
-    return metricsAll
+    return metricsAll, metricsMidAll

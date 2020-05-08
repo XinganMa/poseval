@@ -647,3 +647,18 @@ def assignGTmulti(gtFrames, prFrames, distThresh):
         motAll[imgidx] = mot
 
     return scoresAll, labelsAll, nGTall, motAll
+
+def printStatistics(motStatistics):
+    print("Statistics: ")
+    str = ''
+    for key in motStatistics.keys():
+        str += '& {} '.format(key)
+
+    str += '\\\\\n'
+
+    for key, val in motStatistics.items():
+        str += '& {} '.format(val.sum())
+
+    str += '\\\\\n'
+
+    print(str)
